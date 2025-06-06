@@ -1,0 +1,153 @@
+.generate_nft {
+    width: 100%;
+    padding: 3rem 0;
+  }
+  
+  .generate_nft_container {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+  
+  .generate_nft_container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .generate_nft_container p {
+    margin-bottom: 2rem;
+    color: var(--text-light);
+  }
+  
+  .generate_nft_model_selection {
+    margin-bottom: 1.5rem;
+  }
+  
+  .generate_nft_model_selection label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  .generate_nft_model_selection select {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+  }
+  
+  .generate_nft_prompt {
+    margin-bottom: 1.5rem;
+  }
+  
+  .generate_nft_prompt label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  .generate_nft_prompt textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+    resize: vertical;
+  }
+  
+  .generate_nft_buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .generate_nft_error {
+    color: var(--error-color);
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--error-bg);
+  }
+  
+  .generate_nft_preview {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background-color: var(--card-bg);
+    box-shadow: var(--box-shadow);
+  }
+  
+  .generate_nft_preview h2 {
+    margin-bottom: 1rem;
+  }
+  
+  .generate_nft_preview_image {
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--box-shadow);
+  }
+  
+  .spinner {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .generate_nft_container {
+      width: 90%;
+    }
+  }
+
+  .generate_nft_model_selection select {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--input-bg);
+    color: #333; /* Changed from var(--text-color) to a dark color */
+    font-size: 1rem;
+  }
+  
+  /* Add this to handle the dropdown options */
+  .generate_nft_model_selection select option {
+    background-color: white;
+    color: #333;
+  }.generate_nft_model_selection select {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--input-bg);
+    color: #333; /* Default dark text for light backgrounds */
+    font-size: 1rem;
+  }
+  
+  /* For dark mode */
+  :root[data-theme="dark"] .generate_nft_model_selection select {
+    color: #f0f0f0; /* Light text for dark backgrounds */
+    background-color: #2a2a2a;
+  }
+  
+  .generate_nft_model_selection select option {
+    background-color: white;
+    color: #333;
+  }
+  
+  :root[data-theme="dark"] .generate_nft_model_selection select option {
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+  }

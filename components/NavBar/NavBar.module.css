@@ -1,0 +1,312 @@
+.navbar {
+  width: 100%;
+  padding-block: 1.5rem;
+  position: relative;
+  z-index: 111111111;
+}
+
+.navbar_container {
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.navbar_container_left {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 4rem;
+}
+
+.navbar_container_left_box {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.logo {
+  color: var(--icons-color);
+  font-size: 4rem;
+  cursor: pointer;
+}
+
+.navbar_container_left_discover {
+  position: relative;
+  cursor: pointer;
+  margin-right: 2rem;
+}
+
+.navbar_container_left_discover p {
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+/* Updated Search Box Styles */
+.navbar_container_left_box_input {
+  display: flex;
+  justify-content: center;
+  width: 120%;
+  margin-left: 3rem;
+}
+
+.navbar_container_left_box_input_box {
+  width: 90%;
+  max-width: 500px;
+  border: 2px solid var(--icons-color);
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4rem;
+  transition: all 0.3s ease-in-out;
+  background-color: var(--main-bg-color);
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.navbar_container_left_box_input_box:hover,
+.navbar_container_left_box_input_box:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.15);
+  border-color: var(--icons-color);
+}
+
+.navbar_container_left_box_input_box input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 1rem;
+  color: var(--icons-color);
+}
+
+.navbar_container_left_box_input_box input::placeholder {
+  color: var(--icons-color);
+  opacity: 0.7;
+}
+
+.search_icon {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--icons-color);
+  transition: transform 0.3s ease;
+}
+
+.search_icon:hover {
+  transform: scale(1.1);
+}
+
+.exploreLink {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  color: var(--text-color);
+  transition: all 0.3s ease-in-out;
+}
+
+/* .exploreLink:hover {
+  background-color: var(--icons-color);
+  color: var(--shadow-dark-color);
+  border-radius: 0.3rem;
+} */
+
+/* RIGHT SECTION */
+.navbar_container_right {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: end;
+}
+
+.navbar_container_right_theme_toggle {
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.theme_toggle_button {
+  background: none;
+  border: none;
+  color: var(--icons-color);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.theme_toggle_button:hover {
+  background-color: var(--icons-light-color);
+}
+
+.navbar_container_right_help {
+  position: relative;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.navbar_container_right_discover_box,
+.navbar_container_right_help_box {
+  position: absolute;
+  padding: 1rem 0.5rem;
+  box-shadow: var(--box-shadow);
+  font-size: 1rem;
+  width: 12rem;
+  border-radius: 1rem;
+  background-color: var(--main-bg-color);
+  top: 4rem;
+  left: -0.5rem;
+}
+
+.navbar_container_right_notify {
+  position: relative;
+  cursor: pointer;
+}
+
+.notify {
+  font-size: 2rem;
+}
+
+.navbar_container_right_button {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.navbar_container_right_button > div {
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar_container_right_button button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  min-width: auto;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar_container_right_profile_box {
+  position: relative;
+  cursor: pointer;
+}
+
+.navbar_container_right_profile {
+  border-radius: 50%;
+}
+
+.navbar_container_right_menuBtn {
+  display: none;
+}
+
+.menuIcon {
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.noselect {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.sideBar {
+  position: fixed;
+  top: 0;
+  width: 24rem;
+  background-color: var(--main-bg-color);
+  box-shadow: var(--box-shadow);
+  height: 100vh;
+  overflow-y: auto;
+  display: none;
+  z-index: 11111;
+}
+
+.sideBar::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .navbar_container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .navbar_container_left {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar_container_right {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .navbar_container_right_menuBtn {
+    display: block;
+  }
+
+  .navbar_container_left_box_input_box {
+    display: none;
+  }
+
+  .navbar_container_left_discover {
+    display: none;
+  }
+
+  .navbar_container_right_help {
+    display: none;
+  }
+
+  .navbar_container_right_button {
+    display: none;
+  }
+
+  .sideBar {
+    display: block;
+  }
+}
+/* Add these styles to your existing NavBar.module.css file */
+
+.create_dropdown_container {
+  position: relative;
+}
+
+.create_dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 180px;
+  background-color: var(--card-bg);
+  border-radius: 0.5rem;
+  box-shadow: var(--box-shadow);
+  z-index: 1000;
+  margin-top: 0.5rem;
+  overflow: hidden;
+}
+
+.create_dropdown_item {
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  color: var(--text-color);
+}
+
+.create_dropdown_item:hover {
+  background-color: var(--hover-bg);
+}
+
+.create_dropdown_item svg {
+  font-size: 1.2rem;
+}

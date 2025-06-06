@@ -1,0 +1,125 @@
+.account {
+    width: 100%;
+    margin-block: 6rem;
+}
+
+.account_info {
+    width: 50%;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--shadow-dark-color);
+}
+
+.account_info h1 {
+    font-size: 4rem;
+    line-height: .5;
+}
+
+.account_info p {
+    font-size: 1.3rem;
+    width: 80%;
+    line-height: 1.2;
+    padding-bottom: .5rem;
+}
+
+.account_box {
+    width: 50%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    margin-top: 3rem;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.account_box_img {
+    margin-top: 2rem;
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+}
+
+.account_box_img_img {
+    border-radius: 50%;
+}
+
+.account_box_img_para {
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 0;
+}
+
+.account_box_from {
+    width: 100%;
+}
+
+.Form_box_input {
+    margin-top: 2rem;
+}
+
+.Form_box_input label {
+    display: block;
+    width: 100%;
+    margin-left: 1rem;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.Form_box_input_userName {
+    width: 100%;
+    border: 1px solid var(--icons-color);
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: transparent;
+    margin-top: .5rem;
+    outline: none;
+}
+
+.Form_box_input_box {
+    width: 100%;
+    border: 1px solid var(--icons-color);
+    border-radius: 1rem;
+    align-items: center;
+    display: flex;
+    gap: .7rem;
+    overflow: hidden;
+}
+
+.Form_box_input_box_icon {
+    font-size: 2rem;
+    background-color: var(--icons-color) ;
+    padding: 1rem 1rem;
+    color: var(--main-bg-color);
+    display: grid;
+    cursor: pointer;
+}
+
+.Form_box_input_box input {
+    width: 90%;
+    border: 0;
+    background-color: transparent;
+    outline: none;
+}
+
+.Form_box_input textarea {
+    width: 100%;
+    background-color: transparent;
+    outline: none;
+    border-radius: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--icons-color);
+}
+
+.Form_box_btn {
+    margin: 4rem 0;
+}
+
+.button {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    align-items: center;
+    margin: auto;
+}

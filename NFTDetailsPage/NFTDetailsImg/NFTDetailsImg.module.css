@@ -1,0 +1,125 @@
+.NFTDetailsImg {
+  width: 100%;
+}
+
+.NFTDetailsImg_box_NFT {
+  display: grid;
+}
+
+.NFTDetailsImg_box_NFT_img {
+  grid-column: 1 / -1;
+  grid-row: 1 / end;
+}
+
+.NFTDetailsImg_box_NFT_img_img {
+  border-radius: 1rem;
+  width: 100%;
+}
+
+.NFTDetailsImg_box_NFT_like {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-column: 1 / -1;
+  grid-row: 1 / end;
+  z-index: 111111;
+  align-self: flex-start;
+  padding-inline: 2rem;
+}
+
+.NFTDetailsImg_box_NFT_like p {
+  background-color: var(--icons-color);
+  padding: 0.2rem 1rem;
+  color: var(--main-bg-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+
+.NFTDetailsImg_box_NFT_like_icon {
+  font-size: 1.4rem;
+}
+
+.NFTDetailsImg_box_details,
+.NFTDetailsImg_box_description {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 0;
+  background-color: var(--icons-bg-color);
+  border-radius: 0.5rem;
+  padding-inline: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  color: var(--shadow-dark-color);
+}
+
+.NFTDetailsImg_box_details_box,
+.NFTDetailsImg_box_description_box {
+  padding: 0.1rem 1rem;
+  font-size: 1rem;
+}
+
+.NFTDetailsImg_box_details_box p {
+  line-height: 1;
+  font-size: 1rem;
+}
+.NFTDetailsImg_box_tags_header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0 0.5rem 0;
+  margin-top: 1rem;
+  border-top: 1px solid #e1e5e9;
+}
+
+.NFTDetailsImg_box_tags_icon {
+  font-size: 1.2rem;
+  color: #6c757d;
+}
+
+.NFTDetailsImg_box_tags_header p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.NFTDetailsImg_box_tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+}
+
+.NFTDetailsImg_box_tag {
+  display: inline-block;
+  background-color: #f8f9fa;
+  color: #495057;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid #dee2e6;
+  transition: all 0.2s ease;
+}
+
+.NFTDetailsImg_box_tag:hover {
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+  .NFTDetailsImg_box_tags_header {
+    padding: 0.75rem 0 0.25rem 0;
+  }
+  
+  .NFTDetailsImg_box_tag {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+  }
+}

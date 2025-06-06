@@ -1,0 +1,256 @@
+
+/* Base Styles */
+.upload {
+    padding: 2rem;
+  }
+  
+  .upload_box {
+    margin-top: 2rem;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    background-color: var(--main-bg-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .upload_box input,
+  .upload_box textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background-color: var(--input-bg-color);
+  }
+  
+  .upload_box label {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  
+  .upload_box input[type="checkbox"] {
+    margin-right: 0.5rem;
+  }
+  
+  /* .upload_box_btn {
+    display: flex;
+    align-items: center;
+    
+    justify-content: space-between;
+    margin-top: 2rem;
+  } */
+  
+  .upload_box_btn button {
+    width: 48%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .upload_box_btn button:hover {
+    background-color: var(--button-hover-bg-color);
+  }
+  
+  /* Auction Section */
+  .auction-section {
+    margin-top: 2rem;
+    padding: 1rem;
+    border: 1px dashed var(--icons-color);
+    border-radius: 1rem;
+    background-color: var(--main-bg-color);
+  }
+  
+  .auction-section label {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .auction-section input {
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background-color: var(--input-bg-color);
+  }
+  .sale_type_selector {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  .sale_type_btn {
+    flex: 1;
+    padding: 0.8rem;
+    border: 1px solid var(--icons-color);
+    border-radius: 0.5rem;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    color:var(--icons-color)
+  }
+  
+  .sale_type_btn.active {
+    background-color: var(--icons-color);
+    color: var(--main-bg-color);
+  }
+  
+.auction_fields input[type="number"]::-webkit-outer-spin-button,
+.auction_fields input[type="number"]::-webkit-inner-spin-button,
+.form_box_input input[type="number"]::-webkit-outer-spin-button,
+.form_box_input input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.price_input_box input[type="number"]::-webkit-outer-spin-button,
+.price_input_box input[type="number"]::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+  .auction_fields {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px dashed var(--icons-color);
+    border-radius: 0.5rem;
+  }
+  
+  .auction_fields input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background-color: var(--input-bg-color);
+  }
+  
+  /* @media screen and (max-width: 768px) {
+     */
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    .auction_fields {
+      grid-template-columns: 1fr;
+    }
+    .upload_box_btn {
+      flex-direction: column;
+    }
+  
+    .upload_box_btn button {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+  
+.upload_box_input_para{
+   padding: 0 1rem;
+}
+
+.upload_box_slider_div{
+ display: flex;
+ gap: 1rem;
+}
+
+.upload_box_slider{
+    border: 1px solid var(--icons-color);
+    border-radius: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.upload_box_slider_box{
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.upload_box_slider_box_img_img{
+    border-radius: 50%;
+}
+
+.upload_box_slider_box_img_icon{
+    background-color: var(--icons-color);
+    color: var(--main-bg-color);
+    border-radius: 50%;
+    display: grid;
+    padding: .2rem;
+}
+
+.upload_box_slider p{
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.upload_box_btn{
+    width:100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: auto 6rem;
+    margin-top: 8rem;
+    margin-bottom: 4rem;
+    gap: 2rem;
+    
+
+}
+
+.upload_box_btn_style{
+    width: 100%;
+    display: grid;
+    align-self: center;
+    font-size: 1.3rem;
+}
+
+.active{
+    background-color: var(--icons-color);
+    color: var(--main-bg-color);
+}
+
+@media screen and (max-width: 35em) {
+    .upload_box_slider_div{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .generated_image_container {
+      height: 250px;
+    }
+  }
+
+/* Generated Image Preview */
+.generated_image_preview {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.generated_image_preview h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--icons-color);
+}
+
+.generated_image_container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 400px;
+  margin: 0 auto;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  background-color: var(--main-bg-color);
+  border: 3px solid var(--icons-color);
+  padding: 0;
+}
+
+.generated_image_container img {
+  object-fit: contain !important;
+  border-radius: 0.75rem;
+}
