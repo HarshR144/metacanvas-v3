@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import Image from "next/image";
-import { DiJqueryLogo } from "react-icons/di";
 import { MdNotifications } from "react-icons/md";
 import { BsSearch } from "react-icons/bs";
 import { CgMenuRight } from "react-icons/cg";
-import { FiSun, FiMoon, FiUpload, FiImage  } from "react-icons/fi";
+import { FiSun, FiMoon, FiUpload, FiImage } from "react-icons/fi";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -136,7 +135,7 @@ const NavBar = () => {
     event.preventDefault();
     action();
   };
-  
+
   const navigateToUploadNFT = () => {
     router.push("/uploadNFT");
     setShowCreateDropdown(false);
@@ -179,9 +178,10 @@ const NavBar = () => {
       <div className={Style.navbar_container}>
         <div className={Style.navbar_container_left}>
           <div className={Style.navbar_container_left_box}>
-            <div className={Style.logo}>
-              <DiJqueryLogo onClick={() => router.push("/")} />
+            <div className={Style.logo} onClick={() => router.push("/")}>
+              <Image src="/logo.png" alt="Logo" width={140} height={80} />
             </div>
+
             <div className={Style.navbar_container_left_discover}>
               <Link href="/searchPage">
                 <p className={`${Style.noselect} ${Style.exploreLink}`}>
@@ -251,19 +251,16 @@ const NavBar = () => {
             ) : (
               <>
                 <div className={Style.create_dropdown_container}>
-                  <Button
-                    btnName="Create"
-                    handleClick={toggleCreateDropdown}
-                  />
+                  <Button btnName="Create" handleClick={toggleCreateDropdown} />
                   {showCreateDropdown && (
                     <div className={Style.create_dropdown}>
-                      <div 
+                      <div
                         className={Style.create_dropdown_item}
                         onClick={navigateToUploadNFT}
                       >
                         <FiUpload /> Upload NFT
                       </div>
-                      <div 
+                      <div
                         className={Style.create_dropdown_item}
                         onClick={navigateToGenerateNFT}
                       >
