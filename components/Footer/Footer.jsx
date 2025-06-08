@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import { DiJqueryLogo } from "react-icons/di";
 import {
   TiSocialFacebook,
   TiSocialLinkedin,
@@ -22,9 +21,14 @@ const Footer = () => {
     <div className={Style.footer}>
       <div className={Style.footer_box}>
         <div className={Style.footer_box_social}>
-          {/* <Image src={images.logo} alt="footer logo" height={100} width={100} /> */}
           <a href="/">
-            <DiJqueryLogo className={Style.footer_box_social_logo} />
+            <Image
+              src="/logo.png"
+              alt="Brand Logo"
+              width={160}
+              height={80}
+              priority
+            />
           </a>
           <p>
             The world’s first and largest digital marketplace for crypto

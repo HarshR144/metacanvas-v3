@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image.js";
-import { DiJqueryLogo } from "react-icons/di";
 import { useRouter } from "next/router.js";
 
 //INTERNAL IMPORT
@@ -14,11 +13,16 @@ const Brand = () => {
     <div className={Style.Brand}>
       <div className={Style.Brand_box}>
         <div className={Style.Brand_box_left}>
-          {/* <Image src={images.logo} alt="brand logo" width={100} height={100} /> */}
           <a href="/">
-            <DiJqueryLogo className={Style.Brand_box_left_logo} />
+            <Image
+              src="/logo.png"
+              alt="Brand Logo"
+              width={160}
+              height={100}
+              priority
+            />
           </a>
-          <h1>Earn free crypto with Ciscrypt</h1>
+          <h1>Get best of MetaCanvas</h1>
           <p>A creative agency that lead and inspire.</p>
 
           <div className={Style.Brand_box_left_btn}>

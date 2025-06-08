@@ -7,103 +7,86 @@ import { Brand } from "../components/componentsindex";
 import images from "../img";
 
 const aboutus = () => {
-  const founderArray = [
+  const factsArray = [
     {
-      name: "Niamh O'Shea",
-      position: "Co-founder and Chief Executive",
-      images: images.founder1,
+      title: "500+",
+      info: "NFTs minted and traded on our AI-powered marketplace",
     },
     {
-      name: "Danien Jame",
-      position: "Co-founder and Chief Executive",
-      images: images.founder2,
+      title: "100+",
+      info: "Active collectors and creators in our trading community",
     },
     {
-      name: "Orla Dwyer",
-      position: "Co-founder, Chairman",
-      images: images.founder3,
-    },
-    {
-      name: "Dara Frazier",
-      position: "Co-Founder, Chief Strategy Officer",
-      images: images.founder4,
+      title: "₹2.5L+",
+      info: "Total trading volume across all NFT auctions and sales",
     },
   ];
 
-  const factsArray = [
-    {
-      title: "10 million",
-      info: "Articles have been public around the world (as of Sept. 30, 2021)",
-    },
-    {
-      title: "100,000",
-      info: "Registered users account (as of Sept. 30, 2021)",
-    },
-    {
-      title: "220+",
-      info: "Countries and regions have our presence (as of Sept. 30, 2021",
-    },
-  ];
   return (
     <div className={Style.aboutus}>
       <div className={Style.aboutus_box}>
         <div className={Style.aboutus_box_hero}>
           <div className={Style.aboutus_box_hero_left}>
-            <h1>👋 About Us.</h1>
+            <h1>🚀 About MetaCanvas</h1>
             <p>
-              We’re impartial and independent, and every day we create
-              distinctive, world-class programmes and content which inform,
-              educate and entertain millions of people in the around the world.
+              Welcome to the future of NFT trading and creation. MetaCanvas is
+              an innovative NFT marketplace that combines AI-powered creation
+              tools with personalized trading experiences. Our platform
+              revolutionizes how you discover, create, buy, sell, and auction
+              NFTs through intelligent recommendations and cutting-edge
+              technology that understands your unique preferences and trading
+              style.
             </p>
           </div>
           <div className={Style.aboutus_box_hero_right}>
-            <Image src={images.hero2} />
+            <Image src={images.hero2} alt="MetaCanvas creative workspace" />
           </div>
         </div>
 
         <div className={Style.aboutus_box_title}>
-          <h2>⛱ Founder</h2>
+          <h2>🎯 Our Mission</h2>
           <p>
-            We’re impartial and independent, and every day we create
-            distinctive, world-class programmes and content
+            To create the most intelligent and personalized NFT marketplace
+            where AI meets creativity. We're democratizing digital asset
+            creation and trading by making it accessible, profitable, and
+            perfectly tailored to each user's interests and investment goals.
           </p>
         </div>
 
-        <div className={Style.aboutus_box_founder}>
-          <div className={Style.aboutus_box_founder_box}>
-            {founderArray.map((el, i) => (
-              <div className={Style.aboutus_box_founder_box_img}>
-                <Image
-                  src={el.images}
-                  alt={el.name}
-                  width={500}
-                  height={500}
-                  className={Style.aboutus_box_founder_box_img_img}
-                />
-                <h3>{el.name}</h3>
-                <p>{el.position}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
         <div className={Style.aboutus_box_title}>
-          <h2>🚀 Fast Facts</h2>
+          <h2>📈 Marketplace Stats</h2>
           <p>
-            We’re impartial and independent, and every day we create
-            distinctive, world-class programmes and content
+            See how our AI-powered platform is transforming the NFT trading
+            landscape
           </p>
         </div>
 
         <div className={Style.aboutus_box_facts}>
           <div className={Style.aboutus_box_facts_box}>
             {factsArray.map((el, i) => (
-              <div className={Style.aboutus_box_facts_box_info}>
+              <div key={i} className={Style.aboutus_box_facts_box_info}>
                 <h3>{el.title}</h3>
                 <p>{el.info}</p>
               </div>
             ))}
           </div>
+        </div>
+
+        <div className={Style.aboutus_box_title}>
+          <h2>⚡ Platform Features</h2>
+          <p>
+            <strong>AI-Powered Creation:</strong> Generate unique NFTs using
+            advanced AI algorithms.
+            <br />
+            <strong>Smart Recommendations:</strong> Discover NFTs tailored to
+            your taste and trading history.
+            <br />
+            <strong>Dynamic Auctions:</strong> Participate in exciting live NFT
+            auctions.
+            <br />
+            <strong>Personalized Trading:</strong> Experience a marketplace that
+            adapts to your style.
+          </p>
         </div>
       </div>
       <Brand />
