@@ -12,7 +12,6 @@ import {
   TiArrowSortedDown,
   TiArrowSortedUp,
 } from "react-icons/ti";
-import { DiJqueryLogo } from "react-icons/di";
 
 //INTERNAL IMPORT
 import Style from "./SideBar.module.css";
@@ -117,7 +116,13 @@ const SideBar = ({ setOpenSideMenu, currentAccount, connectWallet }) => {
         {/* <Image src={images.logo} alt="logo" width={150} height={150} /> */}
         <p>
           <a href="/">
-            <DiJqueryLogo className={Style.sideBar_box_logo} />
+            <Image
+              src="/logo.png"
+              alt="Brand Logo"
+              width={140}
+              height={80}
+              priority
+            />
           </a>
         </p>
         <p>
