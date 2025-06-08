@@ -323,7 +323,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
       if (isAuction) {
         const startPriceWei = ethers.utils.parseEther(startPrice.toString());
         const buyoutPriceWei = ethers.utils.parseEther(buyoutPrice.toString());
-        const durationInSeconds = duration * 60;
+        const durationInSeconds = duration * 60* 24 * 60;
 
         transaction = await contract.createToken(
           tokenURI,

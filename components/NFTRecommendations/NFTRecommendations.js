@@ -403,9 +403,9 @@ const RecommendationCard = ({
           )}
           
           {/* Score Badge */}
-          <div className={Style.scoreBadge}>
+          {/* <div className={Style.scoreBadge}>
             {formatScore(recommendation.score)}%
-          </div>
+          </div> */}
         </div>
 
         {/* Content */}
@@ -440,7 +440,7 @@ const RecommendationCard = ({
           </div>
 
           {/* Confidence Bar */}
-          {recommendation.confidence && (
+          {/* {recommendation.confidence && (
             <div className={Style.confidenceContainer}>
               <div className={Style.confidenceHeader}>
                 <span>Confidence</span>
@@ -453,7 +453,7 @@ const RecommendationCard = ({
                 ></div>
               </div>
             </div>
-          )}
+          )} */}
 
           {/* Auction time remaining (similar to NFTCard) */}
           {nftData.listingType === 1 && nftData.endTime && (
