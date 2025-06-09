@@ -139,8 +139,8 @@
 /* Recommendations Grid */
 .recommendationsGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
 }
 
 .recommendationCard {
@@ -150,16 +150,16 @@
   transition: all 0.3s ease-in;
   position: relative;
   overflow: hidden;
-  height: 600px;
+  height: 400px;
 }
 
 .recommendationCard:hover {
   box-shadow: var(--box-shadow-2);
+  transform: translateY(-5px);
 }
 
 .recommendationCard:hover .cardImage {
   transform: scale(1.05);
-  border-radius: 1rem;
 }
 
 /* Card Image */
@@ -168,16 +168,16 @@
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  height: 60%;
   overflow: hidden;
-  border-radius: 1rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
 }
 
 .cardImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 1rem;
   transition: all 0.4s ease-in;
 }
 
@@ -188,47 +188,55 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 1rem;
 }
 
 .placeholderIcon {
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
   color: var(--icons-color);
 }
 
-/* Score Badge (positioned like the like button) */
+/* Score Badge (positioned on the image) */
 .scoreBadge {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  top: 0.8rem;
+  left: 0.8rem;
   background-color: var(--icons-color);
   color: var(--main-bg-color);
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  font-size: 1rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 1.5rem;
+  font-size: 0.8rem;
   font-weight: 700;
   z-index: 10;
 }
 
-/* Card Content (rectangular bottom section) */
+/* Card Content (bottom 40% of the card) */
 .cardContent {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
+  height: 40%;
   background-color: var(--shadow-light-color);
   padding: 1rem;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .cardTitle {
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
   color: var(--icons-color);
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .cardPriceRow {
@@ -239,13 +247,13 @@
 }
 
 .cardPrice {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--icons-color);
 }
 
 .cardPriceLabel {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: var(--icons-color);
 }
 
@@ -254,7 +262,7 @@
   align-items: center;
   gap: 0.3rem;
   margin-bottom: 0.5rem;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: var(--icons-color);
 }
 
@@ -263,16 +271,16 @@
   display: flex;
   align-items: center;
   gap: 0.3rem;
-  padding: 0.2rem 0.5rem;
+  padding: 0.2rem 0.4rem;
   border-radius: 0.3rem;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 500;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   width: fit-content;
 }
 
 .reasonText {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 
 .reasonPurple {
@@ -297,19 +305,19 @@
 
 /* Confidence Bar */
 .confidenceContainer {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 
 .confidenceHeader {
   display: flex;
   justify-content: space-between;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: var(--icons-color);
   margin-bottom: 0.2rem;
 }
 
 .confidenceBarBackground {
-  height: 4px;
+  height: 3px;
   background-color: var(--shadow-dark-color);
   border-radius: 2px;
   overflow: hidden;
@@ -326,14 +334,14 @@
   display: flex;
   align-items: center;
   gap: 0.3rem;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: var(--shadow-dark-color);
 }
 
 /* Icons */
 .iconSmall {
-  width: 1rem;
-  height: 1rem;
+  width: 0.8rem;
+  height: 0.8rem;
 }
 
 /* Empty States */
@@ -395,22 +403,21 @@
 /* Loading States */
 .loadingGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
 }
 
 .loadingCard {
   background-color: var(--shadow-light-color);
-  padding: 1rem;
   border-radius: 1rem;
-  height: 300px;
+  height: 400px;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  overflow: hidden;
 }
 
 .loadingImage {
-  flex: 1;
+  height: 60%;
   background: linear-gradient(
     90deg,
     var(--shadow-dark-color) 25%,
@@ -419,11 +426,12 @@
   );
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
-  border-radius: 0.5rem;
 }
 
 .loadingTextLarge {
-  height: 1.5rem;
+  height: 1.2rem;
+  margin: 1rem;
+  margin-bottom: 0.5rem;
   background: linear-gradient(
     90deg,
     var(--shadow-dark-color) 25%,
@@ -436,8 +444,9 @@
 }
 
 .loadingTextSmall {
-  height: 1rem;
+  height: 0.8rem;
   width: 60%;
+  margin: 0 1rem;
   background: linear-gradient(
     90deg,
     var(--shadow-dark-color) 25%,
@@ -467,6 +476,7 @@
   .recommendationsGrid,
   .loadingGrid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .headerContent {
@@ -482,6 +492,10 @@
   .cardContent {
     padding: 0.8rem;
   }
+
+  .recommendationCard {
+    height: 350px;
+  }
 }
 
 @media screen and (min-device-width: 427px) and (max-device-width: 768px) {
@@ -492,16 +506,77 @@
   .recommendationsGrid,
   .loadingGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
 
   .cardContent {
     padding: 0.8rem;
+  }
+
+  .recommendationCard {
+    height: 350px;
   }
 }
 
 @media screen and (min-device-width: 770px) and (max-device-width: 1024px) {
   .recommendationsGrid,
   .loadingGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-device-width: 1025px) and (max-device-width: 1200px) {
+  .recommendationsGrid,
+  .loadingGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Auction Timer - Improved visibility for both light and dark modes */
+.auctionTimer {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  color: var(--icons-color); /* Changed from --shadow-dark-color to --icons-color for better contrast */
+  font-weight: 500; /* Added font-weight for better readability */
+  background-color: rgba(0, 0, 0, 0.05); /* Light background for better contrast */
+  padding: 0.2rem 0.4rem; /* Added padding for better visual separation */
+  border-radius: 0.3rem; /* Rounded corners for modern look */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border for definition */
+}
+
+/* Alternative approach - using a more prominent style */
+.auctionTimer.prominent {
+  background-color: var(--shadow-light-color);
+  border: 1px solid var(--shadow-dark-color);
+  color: var(--icons-color);
+  font-weight: 600;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.4rem;
+}
+
+/* For dark mode compatibility - add these if you have dark mode variables */
+@media (prefers-color-scheme: dark) {
+  .auctionTimer {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* If you want to make it even more prominent, you can use this style */
+.auctionTimer.urgent {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+  font-weight: 600;
+}
+
+/* For dark mode urgent style */
+@media (prefers-color-scheme: dark) {
+  .auctionTimer.urgent {
+    background-color: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+    border-color: rgba(255, 193, 7, 0.3);
   }
 }

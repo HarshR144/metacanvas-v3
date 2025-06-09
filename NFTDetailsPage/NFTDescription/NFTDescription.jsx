@@ -113,6 +113,14 @@ const handleBuyout = async () => {
     }
   };  
 
+
+  // Function to get minimum bid amount
+  const getMinimumBidAmount = () => {
+    if (nft?.highestBid && parseFloat(nft.highestBid) > 0) {
+      return parseFloat(nft.highestBid);
+    }
+    return parseFloat(nft?.startPrice || 0);
+  };
   const renderActionButtons = () => {
     if (nft?.isActive && currentAccount === nft?.seller?.toLowerCase()) {
       return <p>You can't interact with your own listing</p>;
@@ -134,29 +142,41 @@ const handleBuyout = async () => {
     } 
     
     else if (nft.listingType === 1 && nft.isActive) {
+      const minimumBid = getMinimumBidAmount();
       return (
         <>
-          <input 
-            type="number"
-            placeholder="Bid amount in ETH"
-            value={bidAmount}
-            onChange={(e) => setBidAmount(e.target.value)}
-            className={Style.bidInput}
-          />
-          <Button
-            icon={<FaPercentage />}
-            btnName="Make Offer"
-            handleClick={handlePlaceBid}
-            classStyle={Style.button}
-          />
-          {nft.buyoutPrice && nft.buyoutPrice !=0 && (
+          <div className={Style.NFTDescription_box_profile_biding_box_button}>
+            <input 
+              type="number"
+              placeholder="Bid amount in ETH"
+              value={bidAmount}
+              onChange={(e) => setBidAmount(e.target.value)}
+              className={Style.bidInput}
+            />
             <Button
-              icon={<FaWallet />}
-              btnName={`Buy Now for ${nft.buyoutPrice} ETH`}
-              handleClick={() => handleBuyout(nft.buyoutPrice)}
+              icon={<FaPercentage />}
+              btnName="Make Offer"
+              handleClick={handlePlaceBid}
               classStyle={Style.button}
             />
-          )}
+            {nft.buyoutPrice && nft.buyoutPrice !=0 && (
+              <Button
+                icon={<FaWallet />}
+                btnName={`Buy Now for ${nft.buyoutPrice} ETH`}
+                handleClick={() => handleBuyout(nft.buyoutPrice)}
+                classStyle={Style.button}
+              />
+            )}
+          </div>
+          <div className={Style.bidMessage}>
+            <small>
+              * Bid must be greater than {minimumBid} ETH 
+              {nft?.highestBid && parseFloat(nft.highestBid) > 0 
+                ? " (current highest bid)" 
+                : " (starting price)"
+              }
+            </small>
+          </div>
         </>
       );
     } 
@@ -321,9 +341,9 @@ const handleBuyout = async () => {
 
             
 
-            <div className={Style.NFTDescription_box_profile_biding_box_button}>
+            {/* <div className={Style.NFTDescription_box_profile_biding_box_button}> */}
             {renderActionButtons()}
-            </div>
+            {/* </div> */}
 {/* ------------------------------------------------------------------------------------------ */}
 
             {/* <div className={Style.NFTDescription_box_profile_biding_box_tabs}>

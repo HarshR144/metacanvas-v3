@@ -136,7 +136,7 @@ const NFTCard = ({ NFTData }) => {
                       <small>
                         {el.listingType === 1 ? "Current Bid" : "Price"}
                       </small>
-                      <p>{el.listingType === 1 ?el.startPrice
+                      <p>{el.listingType === 1 ?el.highestBid
 : el.price} ETH</p>
                     </div>
                     <div

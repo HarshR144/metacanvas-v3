@@ -151,25 +151,27 @@ const author = () => {
     const fetchLikedNFTs = async () => {
       try {
         const response = await axios.get(`/api/nft/getLikedNFTs?walletAddress=${currentAccount}`);
-      const likedNFTsData = response.data.likedNFTs || [];
-      
+        
+        const likedNFTsData = response.data.likedNFTs || [];
+        
       // Extract just the NFT IDs from the response
       const likedNFTIds = likedNFTsData.map(item => item.nftId);
       
       // Get all active listings from the blockchain
       const activeListings = await fetchAllListings();
-      
       // Filter the active listings to only include NFTs that:
       // 1. Are liked by the current user
       // 2. Are active
       // 3. Are owned by the contract (not by individuals)
       const activeLikedNFTs = activeListings.filter(
         (nft) => 
-          likedNFTIds.includes(nft.tokenId) && 
-          nft.isActive === true && 
-          nft.owner === process.env.NEXT_PUBLIC_CONTRACT_ADDRESS
+          likedNFTIds.includes(nft.tokenId) 
+        && 
+          nft.isActive === true
+          && 
+        nft.owner.trim().toLowerCase() === process.env.NEXT_PUBLIC_CONTRACT_ADDRESS.trim().toLowerCase()
+
       );
-      
       setLikedNFTs(activeLikedNFTs);
     } catch (error) {
       console.error("Error fetching liked NFTs:", error);

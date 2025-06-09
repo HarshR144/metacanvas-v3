@@ -20,6 +20,7 @@ const NFTRecommendations = ({
   const [lastCalculated, setLastCalculated] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
   const [source, setSource] = useState('');
+  const [activeRecommendations, setActiveRecommendations] = useState([]);
 
   const fetchRecommendations = async (forceRefresh = false) => {
     if (!currentAccount) return;
@@ -61,6 +62,22 @@ const NFTRecommendations = ({
       setRefreshing(false);
     }
   };
+
+  // Filter recommendations to only include active NFTs (those found in contract)
+  useEffect(() => {
+    if (recommendations.length > 0 && nfts && nfts.length > 0) {
+      const activeRecs = recommendations.filter(rec => {
+        const contractNFT = nfts.find(nft => 
+          nft.tokenId === rec.nftId || 
+          nft.tokenId === rec.nftId.toString()
+        );
+        return contractNFT !== undefined;
+      });
+      setActiveRecommendations(activeRecs);
+    } else {
+      setActiveRecommendations([]);
+    }
+  }, [recommendations, nfts]);
 
   const handleRefresh = async () => {
     setRefreshing(true);
@@ -224,11 +241,6 @@ const NFTRecommendations = ({
                 </span>
               ))}
               
-              {userProfile.preferredTags && userProfile.preferredTags.map((tag, index) => (
-                <span key={index} className={Style.categoryTag}>
-                  {tag}
-                </span>
-              ))}
               
               {userProfile.preferredPriceRange && (
                 <span className={Style.priceTag}>
@@ -242,17 +254,20 @@ const NFTRecommendations = ({
 
       {/* Recommendations Grid */}
       <div className={Style.content}>
-        {recommendations.length === 0 ? (
+        {activeRecommendations.length === 0 ? (
           <div className={Style.emptyState}>
             <Sparkles className={Style.emptyStateIcon} />
-            <h3 className={Style.emptyStateTitle}>No recommendations yet</h3>
+            <h3 className={Style.emptyStateTitle}>No active recommendations available</h3>
             <p className={Style.emptyStateMessage}>
-              Interact with some NFTs to get personalized recommendations!
+              {recommendations.length > 0 
+                ? "All recommended NFTs are currently inactive. Try refreshing for new recommendations!"
+                : "Interact with some NFTs to get personalized recommendations!"
+              }
             </p>
           </div>
         ) : (
           <div className={Style.recommendationsGrid}>
-            {recommendations.map((rec, index) => (
+            {activeRecommendations.map((rec, index) => (
               <RecommendationCard
                 key={rec.nftId}
                 recommendation={rec}
@@ -282,11 +297,11 @@ const RecommendationCard = ({
   const [imageError, setImageError] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // Check if NFT exists in contract array and fetch data
+  // Only use NFTs from contract (active NFTs)
   useEffect(() => {
-    const fetchNFTData = async () => {
+    const fetchNFTData = () => {
       try {
-        // First, check if the NFT exists in the contract NFTs array
+        // Only check if the NFT exists in the contract NFTs array
         const contractNFT = nfts_contract?.find(nft => 
           nft.tokenId === recommendation.nftId || 
           nft.tokenId === recommendation.nftId.toString()
@@ -296,71 +311,14 @@ const RecommendationCard = ({
           // Use the contract NFT data structure
           setNftData(contractNFT);
         } else {
-          // Fallback: try to fetch from API
-          try {
-            const response = await fetch(`/api/nfts/${recommendation.nftId}`);
-            if (response.ok) {
-              const data = await response.json();
-              setNftData(data);
-            } else {
-              throw new Error('API fetch failed');
-            }
-          } catch (apiError) {
-            console.error('Error fetching NFT data from API:', apiError);
-            // Final fallback to placeholder data
-            setNftData({
-              tokenId: recommendation.nftId,
-              listingId: recommendation.nftId,
-              seller: '',
-              owner: '',
-              price: '0.5',
-              listingType: 0,
-              startPrice: null,
-              buyoutPrice: null,
-              highestBid: null,
-              highestBidder: '',
-              endTime: null,
-              isActive: true,
-              likesCount: 0,
-              userHasLiked: false,
-              tokenURI: '',
-              tags: [],
-              metadata: {
-                name: `NFT #${recommendation.nftId}`,
-                description: '',
-                image: `https://picsum.photos/300/300?random=${recommendation.nftId}`,
-                attributes: [],
-              },
-            });
-          }
+          // If NFT is not in contract, it's inactive - this shouldn't happen
+          // since we filter in the parent component, but handle gracefully
+          console.warn(`NFT ${recommendation.nftId} not found in active contract NFTs`);
+          setNftData(null);
         }
       } catch (error) {
         console.error('Error in fetchNFTData:', error);
-        // Error fallback
-        setNftData({
-          tokenId: recommendation.nftId,
-          listingId: recommendation.nftId,
-          seller: '',
-          owner: '',
-          price: '0.5',
-          listingType: 0,
-          startPrice: null,
-          buyoutPrice: null,
-          highestBid: null,
-          highestBidder: '',
-          endTime: null,
-          isActive: true,
-          likesCount: 0,
-          userHasLiked: false,
-          tokenURI: '',
-          tags: [],
-          metadata: {
-            name: `NFT #${recommendation.nftId}`,
-            description: '',
-            image: `https://picsum.photos/300/300?random=${recommendation.nftId}`,
-            attributes: [],
-          },
-        });
+        setNftData(null);
       } finally {
         setLoading(false);
       }
@@ -377,6 +335,11 @@ const RecommendationCard = ({
         <div className={Style.loadingTextSmall}></div>
       </div>
     );
+  }
+
+  // Don't render if NFT data is not available (inactive NFT)
+  if (!nftData) {
+    return null;
   }
 
   return (
@@ -417,7 +380,7 @@ const RecommendationCard = ({
           <div className={Style.cardPriceRow}>
             <span className={Style.cardPrice}>
               {nftData.listingType === 1 
-                ? (nftData.startPrice || nftData.price) 
+                ? (nftData.highestBid || nftData.price) 
                 : nftData.price} ETH
             </span>
             <span className={Style.cardPriceLabel}>

@@ -536,20 +536,21 @@ export const NFTMarketplaceProvider = ({ children }) => {
   const formatListings = async (listings, contract) => {
     
     const nftIds = listings.map(item => item.tokenId.toString());
-
     let likeCounts = {};
     let userLikedMap = {};
   
     try {
-      const response = await axios.get(`/api/nft/nftLikeCountArray`, {
-        params: { nftIds, walletAddress: currentAccount }, // Pass as an array, no join
-        paramsSerializer: (params) => {
-          return new URLSearchParams(params).toString();
-        }
-      });      
-      if (response.status == 200) {
-        likeCounts = response.data.likeCounts || {};
-        userLikedMap = response.data.userLikedMap || {};
+      if(nftIds.length != 0){
+          const response = await axios.get(`/api/nft/nftLikeCountArray`, {
+            params: { nftIds, walletAddress: currentAccount }, // Pass as an array, no join
+            paramsSerializer: (params) => {
+              return new URLSearchParams(params).toString();
+            }
+          });      
+          if (response.status == 200) {
+            likeCounts = response.data.likeCounts || {};
+            userLikedMap = response.data.userLikedMap || {};
+          }
       }
     } catch (error) {
       console.error("Error fetching like counts:", error);
