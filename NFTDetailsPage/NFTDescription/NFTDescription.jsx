@@ -87,6 +87,9 @@ const NFTDescription = () => {
 
 
   // Fetch creator info from MongoDB
+
+  //SMART CONTRACT DATA
+  const { buyNFT,placeBid, currentAccount,currentNFT: nft } = useContext(NFTMarketplaceContext);
   useEffect(() => {
     const fetchCreator = async () => {
       if (nft?.seller) {
@@ -103,9 +106,6 @@ const NFTDescription = () => {
     }
     return "Unknown Collection";
   };
-
-  //SMART CONTRACT DATA
-  const { buyNFT,placeBid, currentAccount,currentNFT: nft } = useContext(NFTMarketplaceContext);
   
   const handlePlaceBid = async () => {
     try {
