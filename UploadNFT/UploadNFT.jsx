@@ -345,7 +345,7 @@ console.log(image);
         </div>
 
 
-        <div className={formStyle.Form_box_input}>
+        {/* <div className={formStyle.Form_box_input}>
           <label htmlFor="name">Choose collection</label>
           <p className={Style.upload_box_input_para}>
             Choose an exiting collection or create a new one
@@ -420,7 +420,7 @@ console.log(image);
               />
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className={Style.upload_box_btn}>
           <Button

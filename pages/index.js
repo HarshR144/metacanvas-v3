@@ -98,11 +98,11 @@ const Home = () => {
       )}
 
 
-      <Title
+      {/* <Title
         heading="Browse by category"
         paragraph="Explore the NFTs in the most featured categories."
       />
-      <Category />
+      <Category /> */}
       {/* <Subscribe /> */}
       {/* <Brand /> */}
       {/* <Video /> */}

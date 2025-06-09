@@ -29,6 +29,7 @@ import { NFTTabs } from "../NFTDetailsIndex";
 //IMPORT SMART CONTRACT
 import { NFTMarketplaceContext } from "../../Context/NFTMarketplaceContext";
 import Countdowntimer from "./CountdownTimer.jsx";
+import { fetchUserDetails } from "../../services/userService/fetch_update_UserDetails";
 
 const NFTDescription = () => {
   const [social, setSocial] = useState(false);
@@ -37,6 +38,8 @@ const NFTDescription = () => {
   const [provanance, setProvanance] = useState(false);
   const [owner, setOwner] = useState(false);
   const [bidAmount, setBidAmount] = useState('');
+  const [creatorInfo, setCreatorInfo] = useState(null);
+
   const router = useRouter();
 
   // const historyArray = [images.user1,images.user2,images.user3,images.user4,images.user5,];
@@ -81,6 +84,25 @@ const NFTDescription = () => {
   //     setHistory(true);
   //   }
   // };
+
+
+  // Fetch creator info from MongoDB
+  useEffect(() => {
+    const fetchCreator = async () => {
+      if (nft?.seller) {
+        const user = await fetchUserDetails(nft.seller);
+        setCreatorInfo(user);
+      }
+    };
+    fetchCreator();
+  }, [nft?.seller]);
+
+  const getCollectionDisplay = () => {
+    if (nft?.collection && nft?.collection.trim() !== "") {
+      return nft.collection;
+    }
+    return "Unknown Collection";
+  };
 
   //SMART CONTRACT DATA
   const { buyNFT,placeBid, currentAccount,currentNFT: nft } = useContext(NFTMarketplaceContext);
@@ -128,6 +150,7 @@ const handleBuyout = async () => {
     
     else if (!nft?.isActive) {
       return (
+        <div className={Style.NFTDescription_box_profile_biding_box_button}>
         <Button
           icon={<FaWallet />}
           btnName="List on Marketplace"
@@ -138,6 +161,7 @@ const handleBuyout = async () => {
           }
           classStyle={Style.button}
         />
+        </div>
       );
     } 
     
@@ -184,13 +208,14 @@ const handleBuyout = async () => {
     else {
       return (
         <>
+          <div className={Style.NFTDescription_box_profile_biding_box_button}>
           <Button
             icon={<FaWallet />}
             btnName="Buy NFT"
             handleClick={handleBuyNFT}
             classStyle={Style.button}
           />
-          
+          </div>
         </>
       );
     }
@@ -263,8 +288,8 @@ const handleBuyout = async () => {
           </h1>
           <div className={Style.NFTDescription_box_profile_box}>
             <div className={Style.NFTDescription_box_profile_box_left}>
-              <Image
-                src={images.user1}
+             <Image
+                src={creatorInfo?.profileImage || images.user1}
                 alt="profile"
                 width={40}
                 height={40}
@@ -273,29 +298,32 @@ const handleBuyout = async () => {
               <div className={Style.NFTDescription_box_profile_box_left_info}>
                 <small>Creator</small> <br />
                 {/* <Link href={{ pathname: "/author", query: `${nft.seller}` }}> */}
-                <Link href={{ pathname: "/author" }}>
+                <Link
+                  href={{ pathname: "/author", query: { wallet: nft?.seller } }}
+                >
                   <span>
-                    Karli Costa <MdVerified />
+                    {creatorInfo?.userName || nft?.seller || "Unknown Creator"}{" "}
+                    <MdVerified />
                   </span>
                 </Link>
               </div>
             </div>
 
             <div className={Style.NFTDescription_box_profile_box_right}>
-              <Image
+              {/* <Image
                 src={images.creatorbackground1}
                 alt="profile"
                 width={40}
                 height={40}
                 className={Style.NFTDescription_box_profile_box_left_img}
-              />
+              /> */}
 
-              <div className={Style.NFTDescription_box_profile_box_right_info}>
+              {/* <div className={Style.NFTDescription_box_profile_box_right_info}>
                 <small>Collection</small> <br />
                 <span>
                   Mokeny app <MdVerified />
                 </span>
-              </div>
+              </div> */}
             </div>
           </div>
 
